@@ -15,12 +15,15 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.get('/', (req, res) => res.redirect('/login.html'));
+const UPLOAD_DIR = path.join(__dirname, 'data', 'uploads');
+fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+app.use('/uploads', express.static(UPLOAD_DIR));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ---------- Upload QR ----------
 const upload = multer({
   storage: multer.diskStorage({
-    destination: path.join(__dirname, 'public', 'uploads'),
+    destination: UPLOAD_DIR,
     filename: (req, file, cb) => cb(null, 'qr' + path.extname(file.originalname || '.png'))
   }),
   limits: { fileSize: 3 * 1024 * 1024 }
@@ -373,7 +376,7 @@ app.delete('/api/admin/pengaturan/qr', authRequired(['admin']), (req, res) => {
   try {
     const s = db.prepare('SELECT qr_image_path FROM settings WHERE id = 1').get();
     if (s && s.qr_image_path) {
-      const lokasi = path.join(__dirname, 'public', s.qr_image_path.replace(/^\/+/, ''));
+      const lokasi = path.join(UPLOAD_DIR, path.basename(s.qr_image_path));
       fs.unlink(lokasi, () => {});
     }
     db.prepare('UPDATE settings SET qr_image_path = NULL WHERE id = 1').run();
