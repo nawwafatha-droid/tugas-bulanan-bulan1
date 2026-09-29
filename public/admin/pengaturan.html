@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Pengaturan</title>
+<link rel="stylesheet" href="/css/stylee.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar-container"></aside>
+  <main class="konten">
+
+    <div class="grid-pengaturan">
+    <div class="kartu">
+      <h1>Nomor DANA Penerima</h1>
+      <label for="nomor-dana-baru">Nomor DANA</label>
+      <input type="text" id="nomor-dana-baru">
+      <label for="nama-penerima-baru">Nama Penerima</label>
+      <input type="text" id="nama-penerima-baru">
+      <button onclick="simpanPengaturan()">Simpan</button>
+      <div id="pesan-pengaturan"></div>
+    </div>
+
+    <div class="kartu">
+      <h2>Foto/Gambar QR DANA (opsional)</h2>
+      <p style="font-size:0.85rem; color:var(--abu);">
+        Kalau diisi, gambar ini yang akan ditampilkan ke anggota saat bayar (menggantikan QR otomatis berisi teks).
+      </p>
+      <div id="pratinjau-qr" style="margin-bottom:12px;"></div>
+      <input type="file" id="file-qr" accept="image/*">
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button onclick="unggahQR()">Unggah QR</button>
+        <button class="bahaya" onclick="hapusQR()">Hapus QR</button>
+      </div>
+      <div id="pesan-qr"></div>
+    </div>
+    </div>
+
+  </main>
+</div>
+<script src="/js/common.js"></script>
+<script src="/js/admin-pengaturan.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Tambah Pengeluaran</title>
+<link rel="stylesheet" href="/css/stylee.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar-container"></aside>
+  <main class="konten">
+    <div class="kartu">
+      <h1>Tambah Pengeluaran Kas</h1>
+      <label for="keterangan-keluar">Keterangan</label>
+      <input type="text" id="keterangan-keluar" placeholder="contoh: Beli alat kebersihan">
+      <label for="nominal-keluar">Nominal (Rp)</label>
+      <input type="number" id="nominal-keluar">
+      <button onclick="tambahPengeluaran()">Simpan Pengeluaran</button>
+      <div id="pesan-keluar"></div>
+    </div>
+  </main>
+</div>
+<script src="/js/common.js"></script>
+<script src="/js/admin-pengeluaran.js"></script>
+</body>
+</html>

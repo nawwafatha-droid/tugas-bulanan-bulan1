@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html class="dark" lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <style>
+      html, body { margin: 0; padding: 0; overflow-x: hidden; max-width: 100vw; scrollbar-width: none; -ms-overflow-style: none; }
+      /* Login responsif: kartu mengikuti lebar HP */
+      body { overscroll-behavior: none; }
+      main { width: 100%; max-width: 100vw; overflow-x: hidden; }
+      /* Login: kartu pas di tengah — jarak atas & bawah sama besar */
+      main { align-items: center !important; justify-content: center !important; min-height: 100vh !important; padding-top: 15px !important; padding-bottom: 15px !important; }
+      .kartu-warna { margin: auto !important; }
+      ::-webkit-scrollbar { display: none; }
+      .cyber-grid {
+        background-size: 40px 40px;
+        background-image: linear-gradient(to right, rgba(59, 73, 76, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(59, 73, 76, 0.12) 1px, transparent 1px);
+      }
+      /* Card berwarna: border conic berputar seperti card my-app */
+      .kartu-warna { position: relative; z-index: 1; overflow: hidden; isolation: isolate; max-width: min(32rem, calc(100vw - 2rem)); }
+      .kartu-warna::before {
+        content: "";
+        position: absolute;
+        inset: -50%;
+        background: conic-gradient(
+          from 0deg,
+          transparent 0deg, transparent 60deg,
+          rgba(0, 229, 255, 0.95) 110deg,
+          rgba(168, 85, 247, 0.9) 150deg,
+          rgba(236, 72, 153, 0.85) 180deg,
+          transparent 215deg, transparent 360deg
+        );
+        animation: kbRotate 4s linear infinite;
+        z-index: -1;
+        pointer-events: none;
+      }
+      .kartu-warna::after {
+        content: "";
+        position: absolute;
+        inset: 2px;
+        border-radius: 0.75rem;
+        background: #10131e;
+        z-index: -1;
+        pointer-events: none;
+      }
+      .kartu-warna > * { position: relative; z-index: 2; }
+      @keyframes kbRotate { to { transform: rotate(360deg); } }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-container-lowest": "#0b0e18", "primary-container": "#00e5ff", "surface": "#10131e", "on-surface": "#e0e1f2", "secondary-container": "#571bc1", "tertiary-container": "#ffbde6", "on-surface-variant": "#bac9cc", "outline-variant": "#3b494c", "secondary": "#d0bcff", "primary": "#c3f5ff" }, fontFamily: { "body-md": ["Inter"], "code-md": ["JetBrains Mono"], "headline-md": ["Space Grotesk"] } } } };
+    </script>
+  </head>
+  <body class="bg-surface-container-lowest text-on-surface min-h-screen relative overflow-x-hidden" style="font-family:Inter,system-ui,sans-serif">
+    <div class="fixed inset-0 pointer-events-none cyber-grid opacity-70 z-0"></div>
+    <div class="fixed -top-40 -left-40 w-96 h-96 rounded-full bg-primary-container/20 blur-[130px] pointer-events-none z-0"></div>
+    <div class="fixed -bottom-40 -right-40 w-96 h-96 rounded-full bg-secondary-container/30 blur-[140px] pointer-events-none z-0"></div>
+    <div class="fixed top-1/3 -right-20 w-80 h-80 rounded-full bg-tertiary-container/15 blur-[120px] pointer-events-none z-0"></div>
+    <main class="relative z-10 w-full min-h-screen flex items-center justify-center p-6">
+      <div class="kartu-warna w-full max-w-lg bg-surface rounded-xl shadow-2xl relative overflow-hidden flex flex-col p-8 sm:p-10 space-y-6 transition-all duration-500" style="box-shadow: rgba(3, 4, 7, 0.85) 16px 16px 36px, rgba(30, 36, 56, 0.35) -10px -10px 28px;">
+        <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent to-transparent z-30 transition-all duration-500 via-primary-container" id="top-conduit"></div>
+        <div class="space-y-2">
+          <div class="inline-flex items-center space-x-2">
+            <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+            <span class="tracking-widest text-primary-container uppercase font-bold" style="font-size:12px">OTENTIKASI SISTEM</span>
+          </div>
+          <h2 class="text-on-surface font-bold tracking-tight" style="font-family:'Space Grotesk',sans-serif;font-size:28px">Login</h2>
+          <p class="text-body-md text-on-surface-variant leading-relaxed" style="font-size:15px">Masukkan identitas akun dan PIN keamanan Anda untuk masuk ke sistem.</p>
+        </div>
+        <form class="space-y-4 pt-1" id="login-form">
+          <div class="space-y-2">
+            <label class="text-on-surface-variant font-medium block" style="font-family:'JetBrains Mono',monospace;font-size:13px" for="member-id">Username</label>
+            <div class="relative flex items-center rounded-lg bg-surface-container-lowest transition-all duration-300 shadow-inner" style="box-shadow: inset 4px 4px 9px rgba(3, 4, 7, 0.95), inset -3px -3px 7px rgba(30, 36, 56, 0.35);">
+              <span class="material-symbols-outlined text-primary-container ml-4 select-none">account_circle</span>
+              <input autocomplete="off" class="w-full bg-transparent py-3.5 px-3 text-on-surface placeholder:text-on-surface-variant/40 focus:outline-none focus:ring-0" style="font-size:15px" id="member-id" placeholder="Masukkan Username" spellcheck="false" type="text">
+              <div class="mr-3.5 flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-primary-container/60"></span></div>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <label class="text-on-surface-variant font-medium" style="font-family:'JetBrains Mono',monospace;font-size:13px" for="unified-pin-input">PIN Keamanan</label>
+              <button class="text-primary hover:text-primary-container flex items-center space-x-1 focus:outline-none transition-colors" style="font-family:'JetBrains Mono',monospace;font-size:13px;background:none;border:none;cursor:pointer" id="toggle-unified-pin" type="button">
+                <span class="material-symbols-outlined" id="pin-eye-symbol">visibility</span>
+                <span>Lihat PIN</span>
+              </button>
+            </div>
+            <div class="relative flex items-center rounded-lg bg-surface-container-lowest transition-all duration-300 shadow-inner" style="box-shadow: inset 4px 4px 9px rgba(3, 4, 7, 0.95), inset -3px -3px 7px rgba(30, 36, 56, 0.35);">
+              <span class="material-symbols-outlined text-primary-container ml-4 select-none">lock</span>
+              <input autocomplete="off" class="w-full bg-transparent py-3.5 px-3 text-on-surface tracking-wider placeholder:text-on-surface-variant/40 focus:outline-none focus:ring-0" style="font-size:15px" id="unified-pin-input" maxlength="6" placeholder="••••••" type="password">
+            </div>
+          </div>
+          <div class="pt-2">
+            <button class="w-full py-3.5 px-6 rounded-lg bg-gradient-to-r from-primary-container via-primary to-secondary font-bold tracking-wide flex items-center justify-center space-x-2 transition-all duration-300 hover:brightness-110 active:scale-[0.98]" id="btn-submit" style="box-shadow: rgba(0, 229, 255, 0.35) 0px 0px 20px, rgba(3, 4, 7, 0.85) 6px 6px 14px;color:#0b0e18;font-size:16px;border:none;cursor:pointer" type="submit">
+              <span id="btn-submit-text">Login</span>
+              <span class="material-symbols-outlined" id="btn-submit-icon">arrow_forward</span>
+            </button>
+          </div>
+          <div id="pesan-login" style="color:#ffb4ab;font-size:14px;min-height:20px;"></div>
+        </form>
+        <div class="flex items-center justify-center">
+          <button class="text-secondary hover:text-secondary-fixed transition-colors flex items-center space-x-1.5 group py-1.5 px-3 rounded-md hover:bg-surface-container/40" style="font-family:'JetBrains Mono',monospace;font-size:13px;background:none;border:none;cursor:pointer" id="guest-quick-link" type="button">
+            <span class="material-symbols-outlined group-hover:translate-x-0.5 transition-transform">visibility</span>
+            <span> Mode Guest (View Only)</span>
+          </button>
+        </div>
+        <div class="pt-3 border-t border-outline-variant/20 flex items-center justify-between text-on-surface-variant opacity-60" style="font-family:'JetBrains Mono',monospace;font-size:12px">
+          <span>• Kas Bulanan </span>
+          <span>© 2026 </span>
+        </div>
+      </div>
+    </main>
+    <script src="/js/common.js"></script>
+    <script src="/js/login.js"></script>
+  </body>
+</html>

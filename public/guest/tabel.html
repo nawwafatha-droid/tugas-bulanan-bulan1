@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabel Kas & Data</title>
+<link rel="stylesheet" href="/css/stylee.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar-container"></aside>
+  <main class="konten">
+
+    <div class="kartu">
+      <h2>Rekap Pembayaran Anggota</h2>
+      <div class="tabel-wrap">
+        <table>
+          <thead><tr id="header-anggota"></tr></thead>
+          <tbody id="body-anggota"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="kartu">
+      <h2>Buku Kas</h2>
+      <div class="tabel-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>No</th><th>Hari &amp; Tanggal</th><th>Keterangan</th>
+              <th>Pemasukan (Masuk)</th><th>Pengeluaran (Keluar)</th><th>Saldo Akhir</th>
+            </tr>
+          </thead>
+          <tbody id="body-buku-kas"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="kartu tersembunyi" id="bagian-koreksi">
+      <h2>Koreksi Data Pembayaran (khusus Admin)</h2>
+      <div class="tabel-wrap">
+        <table>
+          <thead><tr><th>Nama</th><th>Bulan</th><th>Nominal</th><th>Tanggal</th><th></th></tr></thead>
+          <tbody id="body-koreksi"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+</div>
+<script src="/js/common.js"></script>
+<script src="/js/tabel.js"></script>
+</body>
+</html>

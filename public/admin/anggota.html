@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Kelola Anggota</title>
+<link rel="stylesheet" href="/css/stylee.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar-container"></aside>
+  <main class="konten">
+
+    <div class="kartu">
+      <h1>Tambah Akun Anggota</h1>
+      <label for="nama-baru">Nama Lengkap</label>
+      <input type="text" id="nama-baru" placeholder="contoh: Budi Santoso">
+      <label for="username-baru">Username</label>
+      <input type="text" id="username-baru" placeholder="contoh: budi">
+      <label for="pin-baru">PIN</label>
+      <input type="password" id="pin-baru" inputmode="numeric" placeholder="PIN buat login anggota ini">
+      <button onclick="tambahAnggota()">Tambah Anggota</button>
+      <div id="pesan-tambah"></div>
+    </div>
+
+    <div class="kartu">
+      <h2>Daftar Anggota</h2>
+      <div class="tabel-wrap">
+        <table>
+          <thead><tr><th>Nama</th><th>Username</th><th>Terdaftar</th><th></th></tr></thead>
+          <tbody id="body-anggota-list"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+</div>
+<script src="/js/common.js"></script>
+<script src="/js/admin-anggota.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bayar Kas</title>
+<link rel="stylesheet" href="/css/stylee.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar-container"></aside>
+  <main class="konten">
+
+    <div class="kartu" id="langkah-1">
+      <h1>1. Isi Data Pembayaran</h1>
+      <label>Bulan Iuran (bisa pilih lebih dari satu)</label>
+      <div class="grid-bulan" id="grid-bulan"></div>
+      <label for="tahun">Tahun</label>
+      <input type="number" id="tahun" value="2026">
+      <label for="nominal">Nominal per bulan (Rp)</label>
+      <input type="number" id="nominal" placeholder="contoh: 20000" oninput="hitungTotal()">
+      <div class="kotak-info" id="info-total">
+        <span id="jumlah-bulan-tampil">0 bulan dipilih</span><br>
+        Total bayar: <b id="total-tampil">-</b>
+      </div>
+      <button onclick="buatQR()">Buat QR / Info Pembayaran</button>
+    </div>
+
+    <div class="kartu tersembunyi" id="langkah-2">
+      <h1>2. Transfer via DANA</h1>
+      <div class="kotak-info">
+        Transfer ke nomor DANA berikut:<br>
+        <span class="nomor" id="nomor-dana">-</span><br>
+        a.n. <span id="nama-penerima">-</span><br>
+        Nominal: <b id="nominal-tampil">-</b>
+      </div>
+      <div id="qr-code"></div>
+      <p style="font-size:0.85rem; color:var(--abu); text-align:center;">
+        Scan QR di atas dengan app DANA (menu Scan), atau buka app DANA lalu kirim manual ke nomor di atas dengan nominal yang sama.
+      </p>
+      <button class="sekunder" onclick="salinNomor()">Salin Nomor DANA</button>
+      <button onclick="tampilkanLangkah3()">Saya Sudah Transfer</button>
+    </div>
+
+    <div class="kartu tersembunyi" id="langkah-3">
+      <h1>3. Konfirmasi</h1>
+      <p>Klik tombol di bawah untuk mengonfirmasi bahwa kamu sudah mengirim dana. Pembayaran akan tercatat atas nama akunmu.</p>
+      <button onclick="konfirmasiBayar()">Konfirmasi Pembayaran</button>
+      <div id="pesan-konfirmasi"></div>
+    </div>
+
+  </main>
+</div>
+<script src="/js/common.js"></script>
+<script src="/js/bayar.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Dashboard</title>
+<link rel="stylesheet" href="/css/stylee.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar-container"></aside>
+  <main class="konten">
+
+    <div class="kartu">
+      <h1>Dashboard Admin</h1>
+      <p style="color:var(--abu); font-size:0.9rem; margin-top:-8px;">
+        Ringkasan kas dan aktivitas login hari ini.
+      </p>
+      <div class="grid-ringkasan">
+        <div class="ringkasan-item">
+          <div class="label">Saldo Kas</div>
+          <div class="nilai" id="saldo">-</div>
+        </div>
+        <div class="ringkasan-item">
+          <div class="label">Total Bulan Ini</div>
+          <div class="nilai" id="bulan-ini">-</div>
+        </div>
+        <div class="ringkasan-item">
+          <div class="label">Anggota Bayar Bulan Ini</div>
+          <div class="nilai" id="jumlah-anggota">-</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kartu">
+      <h2> Sedang Online</h2>
+      <ul class="daftar-online" id="daftar-online">
+        <li>Memuat...</li>
+      </ul>
+    </div>
+
+    <div class="kartu">
+      <h2>Admin Masuk Hari Ini</h2>
+      <ul class="daftar-online" id="daftar-login-hari-ini">
+        <li>Memuat...</li>
+      </ul>
+    </div>
+
+  </main>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/admin-dashboard.js"></script>
+</body>
+</html>

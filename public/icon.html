@@ -1,0 +1,54 @@
+<!-- =========================================================
+     SNIPPET — SIDEBAR sesuai gambar referensi
+     Tempel/pakai sebagai acuan saat merender #sidebar-container
+     di common.js. Struktur luar sidebar HARUS flex-column
+     (sudah diatur lewat CSS .sidebar { display:flex; flex-direction:column }),
+     supaya <div class="sidebar-bawah"> otomatis terdorong ke
+     paling bawah dan tombol Logout ada di sana.
+     ========================================================= -->
+<script>
+/*
+const IKON_MENU = {
+  dashboard:  'dashboard',
+  anggota:    'group',
+  pengeluaran:'add_circle',   // "Tambah Keuangan"
+  tabel:      'table_chart',  // "Tabel & Data"
+  chat:       'forum',
+  pengaturan: 'settings'
+};
+
+function menuItem(href, ikon, teks, aktif) {
+  return `
+    <a href="${href}" class="${aktif ? 'aktif' : ''}">
+      <span class="material-symbols-outlined">${ikon}</span>
+      <span>${teks}</span>
+    </a>`;
+}
+
+// Template lengkap sidebar:
+document.getElementById('sidebar-container').innerHTML = `
+  <div class="brand">
+    <span class="brand-logo"><span class="material-symbols-outlined">account_balance_wallet</span></span>
+    <span class="brand-teks">Kas Bulanan</span>
+  </div>
+
+  <nav>
+    ${menuItem('/admin/dashboard.html',  IKON_MENU.dashboard,   'Dashboard',       halamanAktif === 'dashboard')}
+    ${menuItem('/admin/anggota.html',    IKON_MENU.anggota,     'Kelola Anggota',  halamanAktif === 'anggota')}
+    ${menuItem('/admin/pengeluaran.html',IKON_MENU.pengeluaran, 'Tambah Keuangan', halamanAktif === 'pengeluaran')}
+    ${menuItem('/tabel.html',            IKON_MENU.tabel,       'Tabel & Data',    halamanAktif === 'tabel')}
+    ${menuItem('/chat.html',             IKON_MENU.chat,        'Chat',            halamanAktif === 'chat')}
+    ${menuItem('/admin/pengaturan.html', IKON_MENU.pengaturan,  'Pengaturan',      halamanAktif === 'pengaturan')}
+  </nav>
+
+  <!-- Bungkus logout dengan .sidebar-bawah supaya "margin-top:auto"
+       dari CSS mendorongnya ke paling bawah sidebar, sesuai gambar -->
+  <div class="sidebar-bawah">
+    <a class="keluar" onclick="keluar()">
+      <span class="material-symbols-outlined">logout</span>
+      <span>Logout</span>
+    </a>
+  </div>
+`;
+*/
+</script>

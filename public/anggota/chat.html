@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat</title>
+<link rel="stylesheet" href="/css/stylee.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar-container"></aside>
+  <main class="konten">
+    <div class="kartu">
+      <h1 class="judul-halaman"><span class="material-symbols-outlined ikon-judul">forum</span> Chat</h1>
+<p style="color:var(--abu); font-size:0.88rem; margin-top:-8px;">
+      Silahkan gunakan dengan bijak dan hormati privasi orang lain.
+      </p>
+      <div class="chat-wrap">
+        <div class="chat-pesan-list" id="daftar-pesan"></div>
+        <div class="chat-input-row">
+          <button class="tombol-stiker" onclick="togglePanelStiker()" title="Kirim stiker"><span class="material-symbols-outlined">add_reaction</span></button>
+          <input type="text" id="input-pesan" placeholder="Tulis pesan..." maxlength="500">
+          <button class="tombol-kirim" onclick="kirimPesan()" title="Kirim"><span class="material-symbols-outlined">send</span></button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/chat.js"></script>
+</body>
+</html>
