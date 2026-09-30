@@ -63,3 +63,33 @@ async function hapusQR() {
     pesanEl.innerHTML = `<div class="pesan gagal">${data.pesan}</div>`;
   }
 }
+
+async function gantiAkun() {
+  const usernameBaru = document.getElementById('akun-username').value.trim();
+  const namaBaru = document.getElementById('akun-nama').value.trim();
+  const pinBaru = document.getElementById('akun-pin-baru').value;
+  const pinLama = document.getElementById('akun-pin-lama').value;
+  const pesanEl = document.getElementById('pesan-akun');
+
+  if (!pinLama) {
+    pesanEl.innerHTML = '<div class="pesan gagal">PIN lama wajib diisi.</div>';
+    return;
+  }
+  if (!usernameBaru && !namaBaru && !pinBaru) {
+    pesanEl.innerHTML = '<div class="pesan gagal">Isi minimal satu kolom yang mau diubah.</div>';
+    return;
+  }
+
+  const data = await apiFetch('/api/admin/akun', {
+    method: 'POST',
+    body: JSON.stringify({ pinLama, usernameBaru, namaBaru, pinBaru })
+  });
+
+  if (data.ok) {
+    pesanEl.innerHTML = '<div class="pesan sukses">Akun tersimpan. Login ulang supaya nama dan username baru tampil di semua halaman.</div>';
+    ['akun-username', 'akun-nama', 'akun-pin-baru', 'akun-pin-lama']
+      .forEach(id => { document.getElementById(id).value = ''; });
+  } else {
+    pesanEl.innerHTML = `<div class="pesan gagal">${data.pesan}</div>`;
+  }
+}

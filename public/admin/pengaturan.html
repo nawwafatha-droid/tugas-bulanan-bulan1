@@ -33,7 +33,24 @@
         <button onclick="unggahQR()">Unggah QR</button>
         <button class="bahaya" onclick="hapusQR()">Hapus QR</button>
       </div>
-      <div id="pesan-qr"></div>
+            <div id="pesan-qr"></div>
+    </div>
+
+    <div class="kartu">
+      <h2>Ganti Akun Admin</h2>
+      <p style="font-size:0.85rem; color:var(--abu);">
+        Kosongkan kolom yang tidak ingin diubah. PIN lama wajib diisi.
+      </p>
+      <label for="akun-username">Username baru</label>
+      <input type="text" id="akun-username" autocomplete="off">
+      <label for="akun-nama">Nama baru</label>
+      <input type="text" id="akun-nama" autocomplete="off">
+      <label for="akun-pin-baru">PIN baru (minimal 6 karakter)</label>
+      <input type="password" id="akun-pin-baru" autocomplete="new-password">
+      <label for="akun-pin-lama">PIN lama</label>
+      <input type="password" id="akun-pin-lama" autocomplete="current-password">
+      <button onclick="gantiAkun()">Simpan Akun</button>
+      <div id="pesan-akun"></div>
     </div>
     </div>
 
