@@ -112,6 +112,28 @@ app.get('/api/admin/aktivitas-login', authRequired(['admin']), (req, res) => {
   res.json(rows);
 });
 
+// ================= ADMIN: ganti username / nama / PIN sendiri =================
+app.post('/api/admin/akun', authRequired(['admin']), (req, res) => {
+  const { pinLama, usernameBaru, namaBaru, pinBaru } = req.body;
+  const user = db.prepare('SELECT * FROM users WHERE id = ?').get(req.user.user_id);
+  if (!user || user.pin_hash !== hashPin(String(pinLama || ''))) {
+    return res.status(400).json({ ok: false, pesan: 'PIN lama salah.' });
+  }
+  if (pinBaru && String(pinBaru).length < 6) {
+    return res.status(400).json({ ok: false, pesan: 'PIN baru minimal 6 karakter.' });
+  }
+  const username = String(usernameBaru || user.username).trim();
+  const nama = String(namaBaru || user.nama).trim();
+  const pinHash = pinBaru ? hashPin(String(pinBaru)) : user.pin_hash;
+
+  const bentrok = db.prepare('SELECT id FROM users WHERE username = ? AND id != ?').get(username, user.id);
+  if (bentrok) return res.status(400).json({ ok: false, pesan: 'Username sudah dipakai.' });
+
+  db.prepare('UPDATE users SET username = ?, nama = ?, pin_hash = ? WHERE id = ?').run(username, nama, pinHash, user.id);
+  db.prepare('UPDATE sessions SET username = ?, nama = ? WHERE user_id = ?').run(username, nama, user.id);
+  res.json({ ok: true });
+});
+
 // ================= INFO PUBLIK (untuk halaman bayar) =================
 app.get('/api/settings/public', authRequired(['admin', 'anggota']), (req, res) => {
   const s = getSettings();
